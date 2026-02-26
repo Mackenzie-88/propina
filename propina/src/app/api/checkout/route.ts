@@ -91,7 +91,8 @@ export async function POST(req: NextRequest) {
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
-      automatic_payment_methods: { enabled: true },
+      payment_method_types: ["card"],
+      submit_type: "donate",
       line_items: [
         {
           quantity: 1,
